@@ -207,15 +207,15 @@ function getModelViewMatrix() {
         0, 0, 0, 1
     ]);
 
-    // Calculate the final model-view matrix
+    // Calculate the final model-view matrix to first scale then rotate then translate
     let modelViewMatrix = identityMatrix;
-    modelViewMatrix = multiplyMatrices(translationMatrix, modelViewMatrix);
     modelViewMatrix = multiplyMatrices(scalingMatrix, modelViewMatrix);
     modelViewMatrix = multiplyMatrices(rotationXMatrix, modelViewMatrix);
     modelViewMatrix = multiplyMatrices(rotationYMatrix, modelViewMatrix);
     modelViewMatrix = multiplyMatrices(rotationZMatrix, modelViewMatrix);
+    modelViewMatrix = multiplyMatrices(translationMatrix, modelViewMatrix);
 
-    return modelViewMatrix; //[0.17677669,-0.3061862,0.35355338,0.3,0.46338832,0.06341325,-0.17677669,-0.25,0.12682648,0.78033006,0.6123724,0,0,0,0,1]
+    return modelViewMatrix;
 }
 
 const initialMatrix = new Float32Array([
